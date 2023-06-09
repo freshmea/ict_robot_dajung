@@ -2,7 +2,7 @@ def main():
     print(range(10)) # 제너레이터
     for i in range(10):
         print('출력')
-    # for(int i ; i < 10; i =0){} c code
+    # for(int i = 0 ; i < 10; i++){} c code
     
     
     list_a = ['choi', 'su', 'gil', 1234, 123.2312]
