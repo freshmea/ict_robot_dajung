@@ -15,12 +15,10 @@ def main():
     
     idx = int()
     idx2 = int()
-    while(d.find('a', idx)):
+    while(d.find('a', idx) != -1):
+        idx = d.find('a', idx)
         print(idx)
-        idx = d.find('a', idx)+1
-        if idx == idx2 :
-            break
-        idx2 = d.find('a', idx)+1
+        idx += 1
 
     f = 'TrainA10'.isalnum()
     print(f)
