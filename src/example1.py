@@ -1,5 +1,5 @@
 def main():
-    output = [i for i in range(100) if f'{i:b}'.count('0') == 1]
+    output = [i for i in range(100+1) if f'{i:b}'.count('0') == 1]
     
     for i in output:
         print(f'{i} : {i:b}')

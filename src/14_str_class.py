@@ -14,7 +14,6 @@ def main():
     print(d.rfind('a'))
     
     idx = int()
-    idx2 = int()
     while(d.find('a', idx) != -1):
         idx = d.find('a', idx)
         print(idx)
