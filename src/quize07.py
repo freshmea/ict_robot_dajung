@@ -22,7 +22,7 @@ def read_file():
     return question, question2, correct
 
 def overtime():
-    print('시간 초과되었씁니다.')
+    print('시간 초과되었습니다.')
     
 def main():
     global score, timeout
