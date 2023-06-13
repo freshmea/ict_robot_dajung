@@ -1,9 +1,30 @@
 import time
 import pickle
 import threading
+import sys
 
 score = int()
 timeout = 4
+def timer_input():
+    start_time = time.time()
+    timer = threading.Timer(timeout, overtime)
+    timer.start()
+    while True:
+        try:
+            answer = int(input())
+            if 1 <= answer <= 4: 
+                break
+            else:
+                raise
+        except KeyboardInterrupt as e:
+            print(e)
+            sys.exit()
+        except Exception as e:
+            print(e)
+            print('1~4 까지만 입력해 주세요.')
+    timer.cancel()
+    time_spent = time.time() - start_time
+    return answer, time_spent
 
 def yes_no(answer, correct, time_spent):
     global score, timeout
@@ -33,12 +54,8 @@ def main():
         print(f'{i+1}. 번 문제 {qu}')
         for j, qu2 in enumerate(question2[i]):
             print(f'  {j+1}) {qu2}')
-        start_time = time.time()
-        timer = threading.Timer(timeout, overtime)
-        timer.start()
-        answer = int(input())
-        timer.cancel()
-        time_spent = time.time() - start_time
+            
+        answer, time_spent = timer_input()
         yes_no(answer, correct[i], time_spent)
     
     print(f'퀴즈가 끝났습니다. 당신의 점수는 {score} 입니다.')
