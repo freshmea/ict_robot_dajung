@@ -5,6 +5,7 @@ import sys
 
 score = int()
 timeout = 4
+
 def timer_input():
     start_time = time.time()
     timer = threading.Timer(timeout, overtime)
