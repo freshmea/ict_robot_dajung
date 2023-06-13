@@ -117,7 +117,7 @@ def main():
   3) &
   4) *''')
     answer = int(input())
-    if answer == 2:
+    if answer == 4:
         print('정답입니다.')
         score += 10
     else:
@@ -147,7 +147,7 @@ def main():
   3) True
   4) TRUE''')
     answer = int(input())
-    if answer == 2:
+    if answer == 3:
         print('정답입니다.')
         score += 10
     else:

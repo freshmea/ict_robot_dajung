@@ -53,7 +53,7 @@ def main():
   3) True
   4) TRUE'''
     ]
-    correct = [3, 2, 2, 3, 4, 3, 4, 2, 2, 2]
+    correct = [3, 2, 2, 3, 4, 3, 4, 4, 2, 3]
     answer = int()
     score = int()
     print('아주 쉬운 퀴즈 지금 부터 시작합니다!!')
