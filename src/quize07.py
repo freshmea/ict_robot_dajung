@@ -1,11 +1,13 @@
 import time
 import pickle
+import threading
 
 score = int()
+timeout = 4
 
 def yes_no(answer, correct, time_spent):
-    global score
-    if answer == correct and time_spent < 4:
+    global score, timeout
+    if answer == correct and time_spent < timeout:
         score += 10
         print('정답입니다.')
     else:
@@ -19,8 +21,11 @@ def read_file():
         correct = pickle.load(f)
     return question, question2, correct
 
+def overtime():
+    print('시간 초과되었씁니다.')
+    
 def main():
-    global score
+    global score, timeout
     question, question2, correct = read_file()
     print('아주 쉬운 퀴즈 지금 부터 시작합니다!!')
     
@@ -29,7 +34,10 @@ def main():
         for j, qu2 in enumerate(question2[i]):
             print(f'  {j+1}) {qu2}')
         start_time = time.time()
+        timer = threading.Timer(timeout, overtime)
+        timer.start()
         answer = int(input())
+        timer.cancel()
         time_spent = time.time() - start_time
         yes_no(answer, correct[i], time_spent)
     
