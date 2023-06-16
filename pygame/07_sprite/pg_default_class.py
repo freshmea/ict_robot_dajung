@@ -25,7 +25,7 @@ class Game:
         self.load_data()
         self.all_sprites = pygame.sprite.Group()
         self.saram_sprites = pygame.sprite.Group()
-        self.saram = Saram(300,300, self)
+        self.saram = Saram(300,SCREEN_Y-100, self)
         self.saram_sprites.add(self.saram)
         self.cloud_count = 0
         
@@ -45,7 +45,7 @@ class Game:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.playing = False
-        if self.cloud_count < 5:
+        if self.cloud_count < CLOUD_NUMBER:
             self.all_sprites.add(Cloud(random.randint(0, SCREEN_X), self))
             self.cloud_count += 1
             
