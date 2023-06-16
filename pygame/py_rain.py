@@ -16,10 +16,10 @@ class Rain:
         self.y += self.speed
         self.x += self.wind/10
         if self.y > SCREEN_Y:
-            for rain in self.game.rains:
+            for i, rain in enumerate(self.game.rains):
                 if self == rain:
-                    del rain
-            del self
+                    del self.game.rains[i]
+        del self
 
     def draw(self):
         pygame.draw.line(self.game.screen, self.color, (self.x, self.y), (self.x, self.y+10), self.bold)
