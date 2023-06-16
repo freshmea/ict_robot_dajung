@@ -1,9 +1,20 @@
 import pygame
 from pg_local import *
 import random
-from pg_rain import Rain
 from pg_cloud import Cloud
 
+class Saram(pygame.sprite.Sprite):
+    def __init__(self, x, y, root) -> None:
+        self.x = x
+        self.y = y
+        self.game = root
+        self.color = pygame.Color('black')
+        self.image = pygame.Surface((200, 50))
+        self.image.fill(self.color)
+        self.rect = self.image.get_rect()
+        self.rect.topleft = (self.x, self.y)
+        self.groups = self.game.saram_sprites
+        pygame.sprite.Sprite.__init__(self, self.groups)
 
 class Game:
     def __init__(self) -> None:
@@ -14,6 +25,12 @@ class Game:
         self.rains = []
         self.clouds = []
         self.load_data()
+        self.all_sprites = pygame.sprite.Group()
+        self.saram_sprites = pygame.sprite.Group()
+        self.saram = Saram(300,300, self)
+        self.saram_sprites.add(self.saram)
+        self.cloud_count = 0
+        
     
     def load_data(self):
         self.image = pygame.image.load('image/background01.png').convert_alpha()
@@ -30,22 +47,24 @@ class Game:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.playing = False
-        if len(self.clouds) < 5:
-            self.clouds.append(Cloud(random.randint(0, SCREEN_X), self))
+        if self.cloud_count < 5:
+            self.all_sprites.add(Cloud(random.randint(0, SCREEN_X), self))
+            self.cloud_count += 1
+            
     
     def update(self):
         for rain in self.rains:
             rain.update()
-        for cloud in self.clouds:
-            cloud.update()
+        self.all_sprites.update()
+        self.saram_sprites.update()
             
     def draw(self):
         self.screen.fill((255,255,255))
         self.screen.blit(self.image, (0,0))
         for rain in self.rains:
             rain.draw()
-        for cloud in self.clouds:
-            cloud.draw()
+        self.all_sprites.draw(self.screen)
+        self.saram_sprites.draw(self.screen)
         pygame.display.update()
         
     def quit(self):
