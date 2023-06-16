@@ -22,8 +22,9 @@ class Rain(pygame.sprite.Sprite):
     def update(self):
         self.y += self.speed
         self.x += self.wind/10
-        self.rect = (self.x, self.y)
+        self.rect.topleft = (self.x, self.y)
         if self.y > SCREEN_Y:
             self.game.all_sprites.remove(self)
-        if pygame.Rect((self.x, self.y),(10,3)).colliderect(self.game.saram.rect):
+        # if pygame.Rect((self.x, self.y),(10,3)).colliderect(self.game.saram.rect):
+        if pygame.sprite.collide_rect(self, self.game.saram):
             self.game.all_sprites.remove(self)

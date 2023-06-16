@@ -22,8 +22,6 @@ class Game:
         self.screen = pygame.display.set_mode((SCREEN_X, SCREEN_Y))
         self.clock = pygame.time.Clock()
         self.playing = True
-        self.rains = []
-        self.clouds = []
         self.load_data()
         self.all_sprites = pygame.sprite.Group()
         self.saram_sprites = pygame.sprite.Group()
@@ -53,16 +51,12 @@ class Game:
             
     
     def update(self):
-        for rain in self.rains:
-            rain.update()
         self.all_sprites.update()
         self.saram_sprites.update()
             
     def draw(self):
         self.screen.fill((255,255,255))
         self.screen.blit(self.image, (0,0))
-        for rain in self.rains:
-            rain.draw()
         self.all_sprites.draw(self.screen)
         self.saram_sprites.draw(self.screen)
         pygame.display.update()
