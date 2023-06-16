@@ -7,7 +7,7 @@ class Rain:
         self.x = x
         self.y = y
         self.game = root
-        self.color = pygame.Color('blue')
+        self.color = pygame.Color('red')
         self.bold = 3
         self.speed = random.randint(3, 10)
         self.wind = 9
