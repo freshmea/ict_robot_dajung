@@ -5,7 +5,7 @@ class Game:
     def __init__(self) -> None:
         pygame.init()
         self.screen = pygame.display.set_mode((SCREEN_X, SCREEN_Y))
-        self.clock = pygame.time.Clock()
+        self.clock = pygame.time.Clock(FPS)
         self.playing = True
 
     def run(self):
