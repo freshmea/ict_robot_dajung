@@ -11,6 +11,11 @@ class Game:
         self.color = pygame.Color('blue')
         self.position_x = 0
         self.rains = []
+        self.load_data()
+        
+    def load_data(self):
+        self.image = pygame.image.load('image/background01.png')
+        self.image = pygame.transform.scale(self.image, (SCREEN_X, SCREEN_Y))
 
     def run(self):
         while self.playing:
@@ -23,7 +28,8 @@ class Game:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.playing = False
-        self.rains.append(Rain(random.randint(0, SCREEN_X), 0, self))
+        for _ in range(QUENTITY):
+            self.rains.append(Rain(random.randint(0, SCREEN_X), 0, self))
     
     def update(self):
         for rain in self.rains:
@@ -31,6 +37,7 @@ class Game:
     
     def draw(self):
         self.screen.fill((255,255,255))
+        self.screen.blit(self.image, (0,0))
         for rain in self.rains:
             rain.draw()
         pygame.display.update()
