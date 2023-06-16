@@ -1,18 +1,19 @@
 class Person:
-    def __init__(self) -> None:
-        pass
+    def __init__(self, b) -> None:
+        self.b = b
     def greeting(self):
         print('안녕하세요')
 
 class University:
-    def __init__(self) -> None:
-        pass
+    def __init__(self, a) -> None:
+        self.a = a
     def masage_credit(self):
         print('학점 관리')
 
 class Undergraduate(Person, University):
     def __init__(self) -> None:
-        super().__init__()
+        Person.__init__(self, 1)
+        University.__init__(self, 1)
     def study(self):
         print('공부하기')
 
