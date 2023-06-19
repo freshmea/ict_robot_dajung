@@ -36,8 +36,9 @@ class Rain(pygame.sprite.Sprite):
         if self.y > SCREEN_Y:
             self.game.all_sprites.remove(self)
         if pygame.sprite.collide_mask(self, self.game.player_sprites.sprites()[0]):
-            # 빗의 타입 체크
+            # 비의 타입 체크
             if self.type == 0 and not self.game.player_sprites.sprites()[0].umbrella:
                 self.game.hit_rain += 1
+                self.game.hit_sound.play()
             self.game.all_sprites.remove(self)
             del self
