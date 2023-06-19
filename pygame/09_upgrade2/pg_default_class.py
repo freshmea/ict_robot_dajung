@@ -2,39 +2,19 @@ import pygame
 from pg_local import *
 import random
 from pg_cloud import Cloud
+from pg_player import Player
 
-class Player(pygame.sprite.Sprite):
-    def __init__(self, x, y, root) -> None:
+class Text(pygame.sprite.Sprite):
+    def __init__(self, text, size, color, x, y, root) -> None:
         self.x = x
         self.y = y
-        self.speed = 10
         self.game = root
-        self.images = [pygame.image.load('image/player1.png'),pygame.image.load('image/player2.png')]
-        self.image = self.images[0]
+        font = pygame.font.SysFont('monospace', size)
+        self.image = font.render(text, True, color)
         self.rect = self.image.get_rect()
-        self.rect.center = (self.x, self.y)
-        self.mask = pygame.mask.from_surface(self.image)
-        self.groups = [self.game.all_sprites, self.game.player_sprites]
+        self.rect.topleft = (self.x, self.y)
+        self.groups = [self.game.all_sprites, self.game.text_sprites]
         pygame.sprite.Sprite.__init__(self, self.groups)
-        
-    def update(self):
-        if self.game.pressed_key[pygame.K_UP]:
-            self.y += -self.speed
-        if self.game.pressed_key[pygame.K_DOWN]:
-            self.y += self.speed
-        if self.game.pressed_key[pygame.K_LEFT]:
-            self.x += -self.speed
-        if self.game.pressed_key[pygame.K_RIGHT]:
-            self.x += self.speed
-        if self.game.pressed_key[pygame.K_SPACE]:
-            self.image = self.images[1]
-            self.rect = self.image.get_rect()
-            self.mask = pygame.mask.from_surface(self.image)
-        else:
-            self.image = self.images[0]
-            self.rect = self.image.get_rect()
-            self.mask = pygame.mask.from_surface(self.image)
-        self.rect.center = (self.x, self.y)
 
 class Game:
     def __init__(self) -> None:
@@ -46,6 +26,7 @@ class Game:
         self.all_sprites = pygame.sprite.Group()
         self.player_sprites = pygame.sprite.Group()
         self.cloud_sprites = pygame.sprite.Group()
+        self.text_sprites = pygame.sprite.Group()
         player = Player(300,SCREEN_Y-400, self)
         self.player_sprites.add(player)
         self.all_sprites.add(player)
@@ -89,12 +70,12 @@ class Game:
         self.all_sprites.update()
         if self.pressed_key[pygame.K_a]:
             CLOUD_NUMBER += 1
-            
+
     def draw(self):
         self.screen.fill((255,255,255))
         self.screen.blit(self.image, (0,0))
         self.all_sprites.draw(self.screen)
         pygame.display.update()
-        
+
     def quit(self):
         pygame.quit()
