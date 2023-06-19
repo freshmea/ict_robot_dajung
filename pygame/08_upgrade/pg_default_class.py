@@ -25,10 +25,10 @@ class Game:
         self.load_data()
         self.all_sprites = pygame.sprite.Group()
         self.saram_sprites = pygame.sprite.Group()
+        self.cloud_sprites = pygame.sprite.Group()
         self.saram_sprites.add(Saram(300,SCREEN_Y-100, self))
-        self.cloud_count = 0
-        
-    
+        self.pressed_key = pygame.key.get_pressed()
+
     def load_data(self):
         self.image = pygame.image.load('image/background01.png').convert_alpha()
         self.image = pygame.transform.scale(self.image, (SCREEN_X, SCREEN_Y))
@@ -44,14 +44,29 @@ class Game:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.playing = False
-        if self.cloud_count < CLOUD_NUMBER:
-            self.all_sprites.add(Cloud(random.randint(0, SCREEN_X), self))
-            self.cloud_count += 1
-            
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_q:
+                    self.playing = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                for cloud in self.cloud_sprites:
+                    if cloud.is_click():
+                        self.cloud_sprites.remove(cloud)
+                        self.all_sprites.remove(cloud)
+                        del cloud
+        
+        # 구름 만들어 지는 코드
+        if len(self.cloud_sprites) < CLOUD_NUMBER:
+            cloud = Cloud(random.randint(0, SCREEN_X), self)
+            self.all_sprites.add(cloud)
+            self.cloud_sprites.add(cloud)
+        self.pressed_key = pygame.key.get_pressed()
     
     def update(self):
+        global CLOUD_NUMBER
         self.all_sprites.update()
         self.saram_sprites.update()
+        if self.pressed_key[pygame.K_a]:
+            CLOUD_NUMBER += 1
             
     def draw(self):
         self.screen.fill((255,255,255))
