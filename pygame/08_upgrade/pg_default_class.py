@@ -1,0 +1,100 @@
+import pygame
+from pg_local import *
+import random
+from pg_cloud import Cloud
+
+class Player(pygame.sprite.Sprite):
+    def __init__(self, x, y, root) -> None:
+        self.x = x
+        self.y = y
+        self.speed = 10
+        self.game = root
+        self.images = [pygame.image.load('image/player1.png'),pygame.image.load('image/player2.png')]
+        self.image = self.images[0]
+        self.rect = self.image.get_rect()
+        self.rect.center = (self.x, self.y)
+        self.mask = pygame.mask.from_surface(self.image)
+        self.groups = [self.game.all_sprites, self.game.player_sprites]
+        pygame.sprite.Sprite.__init__(self, self.groups)
+        
+    def update(self):
+        if self.game.pressed_key[pygame.K_UP]:
+            self.y += -self.speed
+        if self.game.pressed_key[pygame.K_DOWN]:
+            self.y += self.speed
+        if self.game.pressed_key[pygame.K_LEFT]:
+            self.x += -self.speed
+        if self.game.pressed_key[pygame.K_RIGHT]:
+            self.x += self.speed
+        if self.game.pressed_key[pygame.K_SPACE]:
+            self.image = self.images[1]
+            self.rect = self.image.get_rect()
+            self.mask = pygame.mask.from_surface(self.image)
+        else:
+            self.image = self.images[0]
+            self.rect = self.image.get_rect()
+            self.mask = pygame.mask.from_surface(self.image)
+        self.rect.center = (self.x, self.y)
+
+class Game:
+    def __init__(self) -> None:
+        pygame.init()
+        self.screen = pygame.display.set_mode((SCREEN_X, SCREEN_Y))
+        self.clock = pygame.time.Clock()
+        self.playing = True
+        self.load_data()
+        self.all_sprites = pygame.sprite.Group()
+        self.player_sprites = pygame.sprite.Group()
+        self.cloud_sprites = pygame.sprite.Group()
+        player = Player(300,SCREEN_Y-400, self)
+        self.player_sprites.add(player)
+        self.all_sprites.add(player)
+        self.pressed_key = pygame.key.get_pressed()
+        self.hit_rain = int()
+
+    def load_data(self):
+        self.image = pygame.image.load('image/background01.png').convert_alpha()
+        self.image = pygame.transform.scale(self.image, (SCREEN_X, SCREEN_Y))
+
+    def run(self):
+        while self.playing:
+            self.clock.tick(FPS)
+            self.event()
+            self.update()
+            self.draw()
+
+    def event(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.playing = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_q:
+                    self.playing = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                for cloud in self.cloud_sprites:
+                    if cloud.is_click():
+                        self.cloud_sprites.remove(cloud)
+                        self.all_sprites.remove(cloud)
+                        del cloud
+        
+        # 구름 만들어 지는 코드
+        if len(self.cloud_sprites) < CLOUD_NUMBER:
+            cloud = Cloud(random.randint(0, SCREEN_X), self)
+            self.all_sprites.add(cloud)
+            self.cloud_sprites.add(cloud)
+        self.pressed_key = pygame.key.get_pressed()
+    
+    def update(self):
+        global CLOUD_NUMBER
+        self.all_sprites.update()
+        if self.pressed_key[pygame.K_a]:
+            CLOUD_NUMBER += 1
+            
+    def draw(self):
+        self.screen.fill((255,255,255))
+        self.screen.blit(self.image, (0,0))
+        self.all_sprites.draw(self.screen)
+        pygame.display.update()
+        
+    def quit(self):
+        pygame.quit()

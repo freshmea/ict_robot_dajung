@@ -17,7 +17,7 @@ class Rain(pygame.sprite.Sprite):
         self.rect.topleft = (self.x, self.y)
         self.groups = self.game.all_sprites
         pygame.sprite.Sprite.__init__(self, self.groups)
-        
+        self.mask = pygame.mask.from_surface(self.image)
 
     def update(self):
         self.y += self.speed + self.y/SCREEN_Y * 20
@@ -25,5 +25,8 @@ class Rain(pygame.sprite.Sprite):
         self.rect.topleft = (self.x, self.y)
         if self.y > SCREEN_Y:
             self.game.all_sprites.remove(self)
-        if pygame.sprite.collide_rect(self, self.game.saram_sprites.sprites()[0]):
+        if pygame.sprite.collide_mask(self, self.game.player_sprites.sprites()[0]):
+            self.game.hit_rain += 1
+            print(self.game.hit_rain)
             self.game.all_sprites.remove(self)
+            del self

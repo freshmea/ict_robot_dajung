@@ -25,8 +25,7 @@ class Game:
         self.load_data()
         self.all_sprites = pygame.sprite.Group()
         self.saram_sprites = pygame.sprite.Group()
-        self.saram = Saram(300,SCREEN_Y-100, self)
-        self.saram_sprites.add(self.saram)
+        self.saram_sprites.add(Saram(300,SCREEN_Y-100, self))
         self.cloud_count = 0
         
     
