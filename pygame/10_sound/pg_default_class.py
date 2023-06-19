@@ -13,9 +13,12 @@ class Game:
         self.playing = True
         self.time = time.time()
         self.hit_rain = int()
-        # 소리 관련
-        pygame.mixer.music.load()
-        
+        # 배경 음악
+        pygame.mixer.music.load('wave/bgmusic.wav')
+        pygame.mixer.music.set_volume(0.4)
+        pygame.mixer.music.play(-1)
+        # 효과음
+        self.hit_sound = pygame.mixer.Sound('wave/hitsound.wav')
         self.load_data()
         self.all_sprites = pygame.sprite.Group()
         self.player_sprites = pygame.sprite.Group()
