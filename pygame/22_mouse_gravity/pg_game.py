@@ -40,6 +40,8 @@ class Rectagle(pygame.sprite.Sprite):
             
         if self.game.mouse_check:
             self.clicked()
+        else:
+            self.acc = vec(0,0)
     
     def clicked(self):
         try:
