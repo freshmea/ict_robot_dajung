@@ -49,6 +49,7 @@ class Rectagle(pygame.sprite.Sprite):
         except:
             pass
         self.acc = self.dir * GRAVITY
+
 class Game:
     def __init__(self):
         pygame.init()

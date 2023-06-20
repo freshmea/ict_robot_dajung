@@ -5,7 +5,7 @@ class Game:
     def __init__(self) -> None:
         pygame.init()
         self.screen = pygame.display.set_mode((SCREEN_X, SCREEN_Y))
-        self.clock = pygame.time.Clock(FPS)
+        self.clock = pygame.time.Clock()
         self.playing = True
 
     def run(self):
@@ -13,6 +13,7 @@ class Game:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.playing = False
+            self.clock.tick(FPS)
             pygame.display.update()
 
     def quit(self):
