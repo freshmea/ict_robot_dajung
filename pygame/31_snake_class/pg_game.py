@@ -45,7 +45,7 @@ class Snake(pygame.sprite.Sprite):
             if self.rect.y >= SCREEN_Y:
                 self.rect.y = 0
             if self.rect.y < 0:
-                self.rect.x = SCREEN_Y
+                self.rect.y = SCREEN_Y
         else:
             self.game.t_rect[self.game.snakes.index(self)]=self.rect.copy()
             self.rect = self.game.t_rect[self.game.snakes.index(self)-1]
