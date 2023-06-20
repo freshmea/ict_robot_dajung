@@ -9,18 +9,29 @@ class Rectagle(pygame.sprite.Sprite):
         self.image.fill(pygame.Color('crimson'))
         self.rect = self.image.get_rect()
         self.rect.center = vec(x, y)
-        self.speed = 3
+        self.ispeed = 3
+        self.friction = FRICTION
+        self.acc = vec(0,0)
         self.dir = vec(random.random()*2-1, random.random()*2-1).normalize()
+        self.vel = self.dir * self.ispeed
 
     def update(self):
+        # 가속도 적용(중력)
+        self.vel.y += GRAVITY
+        # 마찰 추가
+        if self.vel.y > 0:
+            self.vel.y -= self.friction
+        else:
+            self.vel.y += self.friction
         # 속도 적용.
-        self.rect.center += self.dir * self.speed
-        
+        self.rect.center += self.vel
         # 바운더리 제한.
         if self.rect.x < 0 or self.rect.x > SCREEN_X:
-            self.dir *= -1
+            self.vel *= -1
         if self.rect.y < 0 or self.rect.y > SCREEN_Y:
-            self.dir *= -1
+            self.vel *= -1
+        if self.rect.y > SCREEN_Y:
+            self.rect.y -= 30
 class Game:
     def __init__(self):
         pygame.init()
