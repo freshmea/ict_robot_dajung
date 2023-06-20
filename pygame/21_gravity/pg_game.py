@@ -1,7 +1,6 @@
 import pygame, random
 from pg_local import *
 vec = pygame.math.Vector2
-
 class Rectagle(pygame.sprite.Sprite):
     def __init__(self, x, y, root):
         super().__init__()
@@ -19,7 +18,6 @@ class Rectagle(pygame.sprite.Sprite):
     def update(self):
         # 가속도 적용(중력)
         self.vel.y += GRAVITY
-        self.vel += self.acc
         # 마찰 추가
         if self.vel.y > 0:
             self.vel.y -= self.friction
@@ -34,26 +32,12 @@ class Rectagle(pygame.sprite.Sprite):
             self.vel *= -1
         if self.rect.y > SCREEN_Y:
             self.rect.y -= 30
-        # 속도 제한
-        if self.vel.magnitude() > 20:
-            self.vel = self.vel.normalize() * 20
-            
-        if self.game.mouse_check:
-            self.clicked()
-    
-    def clicked(self):
-        try:
-            self.dir =  (vec(pygame.mouse.get_pos()) - vec(self.rect.center)).normalize()
-        except:
-            pass
-        self.acc = self.dir * GRAVITY
 class Game:
     def __init__(self):
         pygame.init()
         self.screen = pygame.display.set_mode((SCREEN_X, SCREEN_Y))
         self.clock = pygame.time.Clock()
         self.playing = True
-        self.mouse_check = False
         self.all_sprites = pygame.sprite.Group()
 
     def run(self):
@@ -71,10 +55,6 @@ class Game:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_q:
                         self.playing = False
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    self.mouse_check = True
-                if event.type == pygame.MOUSEBUTTONUP:
-                    self.mouse_check = False
         # Rectangle 클래스로 객체 20개 만들기.
         if len(self.all_sprites) <= 20:
             self.all_sprites.add(Rectagle(random.randint(0, SCREEN_X), random.randint(0, SCREEN_Y), self))
