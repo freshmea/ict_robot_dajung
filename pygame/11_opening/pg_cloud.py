@@ -33,6 +33,7 @@ class Cloud(pygame.sprite.Sprite):
         if self.x < 0:
             self.dir = 1
         self.rect.topleft = (self.x, self.y)
+        print(self.game.cloud_sprites.has(self), self.game.all_sprites.has(self))
         
     def is_click(self):
         pos = pygame.mouse.get_pos()

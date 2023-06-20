@@ -83,8 +83,8 @@ class Game:
         # 구름 만들어 지는 코드
         if len(self.cloud_sprites) < CLOUD_NUMBER:
             cloud = Cloud(random.randint(0, SCREEN_X), self)
-            self.all_sprites.add(cloud)
-            self.cloud_sprites.add(cloud)
+            # self.all_sprites.add(cloud)
+            # self.cloud_sprites.add(cloud)
         self.pressed_key = pygame.key.get_pressed()
     
     def update(self):
