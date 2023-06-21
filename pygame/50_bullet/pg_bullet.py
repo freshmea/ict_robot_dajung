@@ -12,7 +12,7 @@ class Bullet(pygame.sprite.Sprite):
         self.pos = vec(0,SCREEN_Y)
         self.rect.center = self.pos
         self.vel = vel*100
-        self.gravity = 0.01
+        self.gravity = 0.05
     
     def update(self):
         self.vel.y += self.gravity
