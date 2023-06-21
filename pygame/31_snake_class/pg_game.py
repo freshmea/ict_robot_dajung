@@ -3,6 +3,15 @@ from pg_local import *
 from pg_text import Text
 vec = pygame.math.Vector2
 
+class Pizza(pygame.sprite.Sprite):
+    def __init__(self, root):
+        super().__init__()
+        self.game = root
+        self.image = pygame.Surface((GRID,GRID))
+        self.rect = self.image.get_rect()
+        self.image.fill(pygame.Color('red'))
+        self.rect.topleft = (random.randint(0,GRID_WIDTH-1) ,random.randint(0,GRID_HEIGHT-1))
+
 class Snake(pygame.sprite.Sprite):
     def __init__(self, root, head):
         super().__init__()
@@ -17,7 +26,7 @@ class Snake(pygame.sprite.Sprite):
         self.create_snake()
 
     def create_snake(self):
-        self.length = 3
+        self.length = 30
         self.rect.topleft =(GRID*15, GRID*15)
         self.direction = random.choice([(-1,0),(1,0),(0, -1),(0, 1)])
         self.game.score = 0
@@ -34,18 +43,17 @@ class Snake(pygame.sprite.Sprite):
         self.direction = dir
         
     def update(self):
-        print(self.game.snakes.index(self), self.rect)
         if self.head:
             self.game.t_rect[0] = self.rect.copy()
             self.rect.topleft += vec(self.direction)*GRID
-            if self.rect.x >= SCREEN_X:
+            if self.rect.x >= GRID*GRID_WIDTH:
                 self.rect.x = 0
             if self.rect.x < 0:
-                self.rect.x = SCREEN_X
-            if self.rect.y >= SCREEN_Y:
-                self.rect.y = 0
-            if self.rect.y < 0:
-                self.rect.y = SCREEN_Y
+                self.rect.x = GRID*(GRID_WIDTH-1)
+            if self.rect.y >= GRID*GRID_HEIGHT+SPAN:
+                self.rect.y = SPAN
+            if self.rect.y < SPAN:
+                self.rect.y = GRID*(GRID_HEIGHT-1)+SPAN
         else:
             self.game.t_rect[self.game.snakes.index(self)]=self.rect.copy()
             self.rect = self.game.t_rect[self.game.snakes.index(self)-1]
@@ -70,7 +78,7 @@ class Game:
         self.opening()
         self.playing = True
         while self.playing:
-            self.clock.tick(FPS)
+            self.clock.tick(FPS + self.snakes[0].length/2)
             self.update()
             self.event()
             self.make_snake()
@@ -118,6 +126,8 @@ class Game:
                     self.all_sprites.sprites()[0].change_dir((1,0))
                 if event.key == pygame.K_LEFT:
                     self.all_sprites.sprites()[0].change_dir((-1,0))
+            pizza = Pizza(self)
+            self.all_sprites.add(pizza)
 
     def make_snake(self):
         # 스네이크 만드는 클래스.
@@ -134,16 +144,18 @@ class Game:
         self.screen.fill(pygame.Color('white'))
         self.draw_grid()
         self.all_sprites.draw(self.screen)
+        text1 = Text(f'점수 : {self.score}뱀의 길이 : {self.snakes[0].length} 게임 속도:{self.snakes[0].length//4}', 50, pygame.Color('black'), 30, 20, self)
+        self.screen.blit(text1.image, text1.rect)
         pygame.display.update()
         
     def draw_grid(self):
         for row in range(0, int(GRID_HEIGHT)):
             for col in range(0, int(GRID_WIDTH)):
                 if (row+col) % 2 == 0:
-                    rect = pygame.Rect((col*GRID, row*GRID), (GRID, GRID))
+                    rect = pygame.Rect((col*GRID, row*GRID+SPAN), (GRID, GRID))
                     pygame.draw.rect(self.screen, pygame.Color('pink1'), rect)
                 else:
-                    rect = pygame.Rect((col*GRID, row*GRID), (GRID, GRID))
+                    rect = pygame.Rect((col*GRID, row*GRID+SPAN), (GRID, GRID))
                     pygame.draw.rect(self.screen, pygame.Color('pink3'), rect)
 
     def quit(self):
