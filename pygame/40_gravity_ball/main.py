@@ -1,6 +1,6 @@
 import pygame
 from pg_local import *
-from pg_default_class import Game
+from pg_game import Game
 
 def main():
     game = Game()
