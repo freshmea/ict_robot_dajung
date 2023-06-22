@@ -4,7 +4,8 @@ from pg_game import Game
 
 def main():
     game = Game()
-    game.run()
+    while game.replay:
+        game.run()
     game.quit()
 
 if __name__ =='__main__':
