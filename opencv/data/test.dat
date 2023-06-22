@@ -1,0 +1,35 @@
+%YAML:1.0
+---
+opencv_ml_ann_mlp:
+   format: 3
+   layer_sizes: [ 2, 1 ]
+   activation_function: SIGMOID_SYM
+   f_param1: 6.6666666666666663e-01
+   f_param2: 1.7159000000000000e+00
+   min_val: -9.4999999999999996e-01
+   max_val: 9.4999999999999996e-01
+   min_val1: -9.7999999999999998e-01
+   max_val1: 9.7999999999999998e-01
+   training_params:
+      train_method: BACKPROP
+      dw_scale: 1.0000000000000001e-01
+      moment_scale: 0.
+      term_criteria:
+         epsilon: 1.0000000000000000e-08
+         iterations: 100
+   input_scale:
+      - 1.
+      - 0.
+      - 1.
+      - 0.
+   output_scale:
+      - 1.
+      - 0.
+   inv_output_scale:
+      - 1.
+      - 0.
+   weights:
+      -
+         - 7.4953780542987891e-01
+         - 8.0308398680720028e-01
+         - -3.2989559949546710e-01
