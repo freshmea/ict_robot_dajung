@@ -2,6 +2,10 @@ import cv2
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
+# TkAgg 사용하기.
+# import matplotlib
+# matplotlib.use('TkAgg')
+
 cap = cv2.VideoCapture('opencv/data/vtest.avi')
 # plt.ion()
 fig = plt.figure(figsize=(10,6))
