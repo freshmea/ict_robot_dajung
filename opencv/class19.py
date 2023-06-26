@@ -6,13 +6,13 @@ while True:
     key = cv2.waitKeyEx(30)
     if key == 0x1B:
         break
-    elif key == 65363: # right
+    elif key == 65363: # right 0xff53
         direction = 0
-    elif key == 65364: # down
+    elif key == 65364: # down 0xff54
         direction = 1
-    elif key == 65361: # left
+    elif key == 65361: # left 0xff51
         direction = 2
-    elif key == 65362: # up
+    elif key == 65362: # up 0xff52
         direction = 3
         
     if direction == 0: #right
