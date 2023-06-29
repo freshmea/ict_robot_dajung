@@ -6,7 +6,6 @@ gray = cv2.cvtColor(src, cv2.COLOR_BGR2GRAY)
 
 K = 5
 corners = cv2.goodFeaturesToTrack(gray, K, 0.05, 10)
-
 corners2 = cv2.goodFeaturesToTrack(gray, K, 0.05, 10, useHarrisDetector=True)
 
 corners = corners.reshape(-1, 2)
