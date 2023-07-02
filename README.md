@@ -7,3 +7,4 @@
 * ROS2 : https://docs.google.com/spreadsheets/d/1Cjcy4guMlkmEkryRMsu3g7H_shr6skfevS71hDpA7DI/edit?usp=sharing
 
 
+* history 파일 업데이트 7/2 
