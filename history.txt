@@ -1,0 +1,332 @@
+    1  sudo apt install terminator
+    2  cd Downloads/
+    3  ls
+    4  ls -l
+    5  ls -al
+    6  sudo apt install ./code_1.78.2-1683731010_amd64.deb 
+    7  code
+    8  sudo apt install python3.7
+    9  clear
+   10  python
+   11  python3
+   12  python3.7
+   13  git clone https://github.com/freshmea/ict_robot_dajung.git
+   14  sudo apt intall git
+   15  sudo apt install git
+   16  git clone https://github.com/freshmea/ict_robot_dajung.git
+   17  mkdir python_class
+   18  cd python_class/
+   19  ls
+   20  python3.7 class1.py 
+   21  history
+   22  git config --global user.email "freshmea@naver.com"
+   23  git config --global user.name "freshmea"
+   24  python -v
+   25  python -V
+   26  sudo update-alternatives --config python
+   27  ls /usr/bin/ | grep python
+   28  sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
+   29  sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2
+   30  sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.7 3
+   31  sudo update-alternatives --config python
+   32  python
+   33  pip install numpy
+   34  history
+   35  sudo apt install python-pip
+   36  pip install numpy
+   37  pip
+   38  pip3
+   39  sudo apt install python3-pip
+   40  pip3
+   41  pip
+   42  pip install numpy
+   43  sudo pip install numpy
+   44  pip install Cython
+   45  pip install numpy
+   46  pip upgrade
+   47  pip install --upgrade pip
+   48  pip install numpy
+   49  terminator
+   50  ls
+   51  cd ict_robot_dajung/
+   52  ls
+   53  cd src
+   54  ls
+   55  python
+   56  python class42.py
+   57  mkdir data
+   58  python class42.py
+   59  cd data
+   60  ls
+   61  cat text.txt 
+   62  1
+   63  2
+   64  3
+   65  ls
+   66  cd ict_robot_dajung/
+   67  ls
+   68  cd src/
+   69  history
+   70  set FLASK_APP=class60.py
+   71  flask run
+   72  flask run --app class60.py
+   73  /usr/bin/python3.7
+   74  d /home/aa/ict_robot_dajung ; /usr/bin/env /usr/bin/python3.7 /home/aa/.vscode/extensions/ms-python.python-2023.8.0/pythonFiles/lib/python/debugpy/adapter/../../debugpy/launcher 44535 -- /home/aa/ict_robot_dajung/src/class57.py abc def
+   75  python -V
+   76  ls
+   77  cd src
+   78  ls
+   79  python class57.py abc def ggg
+   80  python class57.py --default
+   81  python class57.py default
+   82  python class57.py active
+   83  cd src
+   84  cd ..
+   85  clear
+   86  pip install beautifulsoup4
+   87  pip list
+   88  python3.6
+   89  python
+   90  python3.6
+   91  python3.6 -m pip install beautifulsoup4
+   92  python3.6
+   93  clear
+   94  pip install flask
+   95  cd src
+   96  ls
+   97  set FLASK_APP=class60.py
+   98  flask run
+   99  flask
+  100  ls
+  101  set FLASK_APP=class60.py
+  102  echo FLASK_APP
+  103  echo $FLASK_APP
+  104  flask run
+  105  flask --app
+  106  flask --app class60.py
+  107  flask run --app class60.py
+  108  flask
+  109  flask --app run class60.py
+  110  set FLASK_APP=class60.py
+  111  flask run
+  112  set FLASK_APP=class60.py
+  113  flask run
+  114  set FLASK_APP=class60.py
+  115  flask run
+  116  set FLASK_APP=app.py
+  117  flask run
+  118  fc-list
+  119  fc-font:lang=kp
+  120  fc-font:lang=ko
+  121  fc-font :lang=ko
+  122  fc-font
+  123  fc-list :lang=ko
+  124  fc-list
+  125  fc-list :lang=ko
+  126  sudo apt install terminator
+  127  sudo apt remove terminator
+  128  sudo apt install terminator
+  129  terminator
+  130  cd /usr/bin
+  131  ls
+  132  sudo nano terminator
+  133  terminator
+  134  xterm
+  135  python3.5
+  136  ls /usr/bin/ | grep python
+  137  sudo update-alternatives --config python
+  138  terminator
+  139  python
+  140  sudo update-alternatives --config python
+  141  python
+  142  terminator
+  143  pip install opencv-contrib-python
+  144  python -m pip install opencv-contrib-python
+  145  python -m pip install numpy
+  146  python -m pip install matplotlib
+  147  python -m pip install tensorflow
+  148  python -V
+  149  python3.7 -m pip install opencv-contrib-python
+  150  python3.7 -m pip install numpy
+  151  python3.7 -m pip install matplotlib
+  152  python3.7 -m pip install pillow
+  153  sudo python3.7 -m pip install pillow
+  154  clear
+  155  history
+  156  sudo apt install python3-pip
+  157  history
+  158  python3.7 install skbuild
+  159  python3.7 -m pip install skbuild
+  160  python3.7 -m pip install scikit-build
+  161  history
+  162  python3.7 -m pip install cmake
+  163  sudo apt update
+  164  sudo apt install python3-pip
+  165  history
+  166  opencv -version
+  167  opencv
+  168  pip list
+  169  clear
+  170  history
+  171  python3.7 -m pip list
+  172  python3.7 -m pip list | grep opencv
+  173  pip install --upgrade pip
+  174  python3.7 -m pip install --upgrade pip
+  175  clear
+  176  history
+  177  python3.7 -m pip install tensorflow
+  178  python3.7 -m pip install update
+  179  python3.7 -m pip install upgrade
+  180  python3.7 -m pip install fapy
+  181  python3.7 -m pip list
+  182  yt-dlp
+  183  ls
+  184  cd ict_robot_dajung/
+  185  ls
+  186  cd opencv/
+  187  ls
+  188  python3.7 class03.py
+  189  python3.7 -m pip install youtube_dl
+  190  python3.7 -m pip install pafy
+  191  clear
+  192  history
+  193  clear
+  194  sudo apt-get install python3.7-tk
+  195  sudo apt-get upgrade
+  196  wget https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_tools/master/install_ros2_dashing.sh
+  197  ls
+  198  cat install_ros2_dashing.sh 
+  199  python3 -V
+  200  python3.7 -V
+  201  python -V
+  202  chmod 755 ./install_ros2_dashing.sh
+  203  bash ./install_ros2_dashing.sh
+  204  history
+  205  nautilus
+  206  cd ..
+  207  ls
+  208  bash ./install_ros2_dashing.sh
+  209  sudo apt install python3-colcon-common-extensions
+  210  curl -sSL http://get.gazebosim.org | sh
+  211  sudo apt remove gazebo11 libgazebo11-dev
+  212  sudo apt install gazebo9 libgazebo9-dev
+  213  sudo apt install ros-dashing-gazebo-ros-pkgs
+  214  sudo apt install ros-dashing-cartographer
+  215  sudo apt install ros-dashing-cartographer-ros
+  216  sudo apt install ros-dashing-navigation2
+  217  sudo apt install ros-dashing-nav2-bringup
+  218  sudo apt install python3-vcstool
+  219  source /opt/ros/dashing/setup.bash
+  220  sudo apt install ros-dashing-dynamixel-sdk
+  221  sudo apt install ros-dashing-turtlebot3-msgs
+  222  sudo apt install ros-dashing-turtlebot3
+  223  source ~/.bashrc
+  224  cw
+  225  cs
+  226  ros2 run demo_nodes_cpp talker
+  227  ros2 run demo_nodes_cpp listener
+  228  ros2 topic echo /turtle1/cmd_vel
+  229  ros2 topic bw /turtle1/cmd_vel
+  230  ros2 topic pub --once /turtle1/cmd_vel geometry_msgs/msg/Twist '{linear: {x: 2.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 1.8}}'
+  231  ros2 topic pub --1 /turtle1/cmd_vel geometry_msgs/msg/Twist '{linear: {x: 2.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 1.8}}'
+  232  rqt
+  233  clear
+  234  ros2 param list
+  235  ros2 param get /turtlesim background_b
+  236  ros2 param get /turtlesim background_r
+  237  ros2 param get /turtlesim background_g
+  238  ros2 param set /turtlesim background_g 255
+  239  ros2 param set /turtlesim background_b 0
+  240  mkdir test
+  241  cd test
+  242  ros2 param dump /turtlesim
+  243  ro2 param dump -h
+  244  ros2 param dump -h
+  245  ros2 param -h
+  246  ros2 action list
+  247  ros2 action info /turtle1/rotate_absolute
+  248  ros2 action send_goal /turtle1/rotate_absolute turtlesim/action/RoateAbsolute 0
+  249  ros2 action send_goal /turtle1/rotate_absolute turtlesim/action/RotateAbsolute 0
+  250  rqt
+  251  ros2 action send_goal /turtle1/rotate_absolute turtlesim/action/RotateAbsolute 0.0
+  252  ros2 action send_goal /turtle1/rotate_absolute turtlesim/action/RotateAbsolute '{theta: 0.0}'
+  253  ros2 action send_goal /turtle1/rotate_absolute turtlesim/action/RotateAbsolute '{theta: 90.0}'
+  254  ros2 action send_goal /turtle1/rotate_absolute turtlesim/action/RotateAbsolute '{theta: 3.14}'
+  255  history
+  256  history
+  257  ros2 run demo_nodes_cpp talker
+  258  ros2 run demo_nodes_cpp listener
+  259  history
+  260  clear
+  261  ros2 run turtlesim turtlesim_node
+  262  ros2 node list
+  263  ros2 node info /turtlesim
+  264  clear
+  265  ros2 run turtlesim turtle_teleop_key 
+  266  ros2 service call /spawn turtlesim/srv/Spawn "{x: 2, y: 2, theta: 0.2, name: ''}" 
+  267  ros2 node info
+  268  ros2 node info /turtle1/cmd_vel
+  269  ros2 node info 
+  270  ros2 node info /turtlesim
+  271  cd ~
+  272  cd /
+  273  ls
+  274  cd usr
+  275  ls
+  276  cd ..
+  277  cd home
+  278  ls
+  279  cd aa
+  280  ls
+  281  mkdir opencv_sj
+  282  ㅣㄴ
+  283  ls
+  284  cd Downloads/
+  285  ls
+  286  clear
+  287  history
+  288  sudo apt update
+  289  sudo apt upgrade
+  290  history
+  291  python3.7 -m pip install --upgrade pip
+  292  hisotry
+  293  history
+  294  code
+  295  /usr/bin/python3.7 /home/aa/opencv_sj/class02.py
+  296  /usr/bin/python3.7 /home/aa/opencv_sj/class03.py
+  297  /usr/bin/python3.7 /home/aa/opencv_sj/class04.py
+  298  /usr/bin/python3.7 /home/aa/opencv_sj/class05.py
+  299  /usr/bin/python3.7 /home/aa/opencv_sj/class06.py
+  300  /usr/bin/python3.7 /home/aa/opencv_sj/class07.py
+  301  history
+  302  /usr/bin/python3.7 /home/aa/opencv_sj/class06.py
+  303  /usr/bin/python3.7 /home/aa/opencv_sj/class07.py
+  304  /usr/bin/python3.7 /home/aa/opencv_sj/class06.py
+  305  /usr/bin/python3.7 /home/aa/opencv_sj/class07.py
+  306  /usr/bin/python3.7 /home/aa/opencv_sj/class06.py
+  307  /usr/bin/python3.7 /home/aa/opencv_sj/class07.py
+  308  /usr/bin/python3.7 /home/aa/opencv_sj/class06.py
+  309  /usr/bin/python3.7 /home/aa/opencv_sj/class07.py
+  310  /usr/bin/python3.7 /home/aa/opencv_sj/class06.py
+  311  /usr/bin/python3.7 /home/aa/opencv_sj/class07.py
+  312  /usr/bin/python3.7 /home/aa/opencv_sj/class06.py
+  313  /usr/bin/python3.7 /home/aa/opencv_sj/class08.py
+  314  /usr/bin/python3.7 /home/aa/opencv_sj/class09.py
+  315  /usr/bin/python3.7 /home/aa/opencv_sj/class10.py
+  316  /usr/bin/python3.7 /home/aa/opencv_sj/class11.py
+  317  /usr/bin/python3.7 /home/aa/opencv_sj/class12.py
+  318  /usr/bin/python3.7 /home/aa/opencv_sj/class13.py
+  319  /usr/bin/python3.7 /home/aa/opencv_sj/class14.py
+  320  /usr/bin/python3.7 /home/aa/opencv_sj/class15.py
+  321  /usr/bin/python3.7 /home/aa/opencv_sj/class16.py
+  322  /usr/bin/python3.7 /home/aa/opencv_sj/class17.py
+  323  /usr/bin/python3.7 /home/aa/opencv_sj/class18.py
+  324  /usr/bin/python3.7 /home/aa/opencv_sj/class19.py
+  325  /usr/bin/python3.7 /home/aa/opencv_sj/class03.py
+  326  /usr/bin/python3.7 /home/aa/opencv_sj/class19.py
+  327  history
+  328  /usr/bin/python3.7 /home/aa/opencv_sj/class20.py
+  329  /usr/bin/python3.7 /home/aa/opencv_sj/class21.py
+  330  /usr/bin/python3.7 /home/aa/opencv_sj/class22.py
+  331  history
+
