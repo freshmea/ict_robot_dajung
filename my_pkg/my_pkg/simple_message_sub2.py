@@ -4,13 +4,13 @@ from rclpy.qos import QoSProfile
 from rclpy.qos import QoSHistoryPolicy, QoSReliabilityPolicy, QoSDurabilityPolicy
 from std_msgs.msg import String 
 
-class M_sub(Node):
+class M2_sub(Node):
     def __init__(self):
-        super().__init__('simple_msub')
+        super().__init__('simple_m2sub')
         self.qos_profile = QoSProfile(history=QoSHistoryPolicy.KEEP_ALL,
                                       reliability=QoSReliabilityPolicy.RELIABLE,
                                       durability=QoSDurabilityPolicy.TRANSIENT_LOCAL)
-        self.pub = self.create_subscription(String, 'message', self.sub_message, self.qos_profile)
+        self.pub = self.create_subscription(String, 'message2', self.sub_message, self.qos_profile)
 
     def sub_message(self, msg):
         self.get_logger().info(f'Recieved message: {msg.data}')
@@ -18,7 +18,7 @@ class M_sub(Node):
 
 def main(args = None):
     rclpy.init(args=args)
-    node = M_sub()
+    node = M2_sub()
     try:
         rclpy.spin(node) # 블럭함수
     except KeyboardInterrupt:

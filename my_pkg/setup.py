@@ -21,7 +21,11 @@ setup(
     entry_points={
         'console_scripts': [
             'mpub = my_pkg.simple_message_pub:main',
-            'msub = my_pkg.simple_message_sub:main'
+            'msub = my_pkg.simple_message_sub:main',
+            'tpub = my_pkg.simple_time_pub:main',
+            'tsub = my_pkg.simple_time_sub:main',
+            'm2sub = my_pkg.simple_message_sub2:main',
+            'mtsub = my_pkg.simple_message_time_sub:main'
         ],
     },
 )
