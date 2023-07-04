@@ -8,3 +8,16 @@
 
 
 * history 파일 업데이트 7/2 
+
+
+* ros2 build 에러가 다음과 같을 때 
+  ```
+/usr/lib/python3.10/site-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+  ```
+  이 싸이트를 참고해서 해결 
+  https://answers.ros.org/question/396439/setuptoolsdeprecationwarning-setuppy-install-is-deprecated-use-build-and-pip-and-other-standards-based-tools/
+
+  setuptools 버전을 58.2.0 으로 다운 그래이드 함 
+  pip install setuptools==58.2.0
+  python3 -m pip install setuptools==58.2.0
