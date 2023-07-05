@@ -25,7 +25,9 @@ setup(
             'tpub = my_pkg.simple_time_pub:main',
             'tsub = my_pkg.simple_time_sub:main',
             'm2sub = my_pkg.simple_message_sub2:main',
-            'mtsub = my_pkg.simple_message_time_sub:main'
+            'mtsub = my_pkg.simple_message_time_sub:main',
+            'myinterfacepub = my_pkg.simple_myinterface_pub:main',
+            'myinterfacesub = my_pkg.simple_myinterface_sub:main'
         ],
     },
 )

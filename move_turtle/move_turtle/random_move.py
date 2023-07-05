@@ -38,14 +38,14 @@ class TurtleM_pub(Node):
         msg.angular.y = 0.0
         msg.angular.z = self.direction
         self.pub2.publish(msg)
-        
+
     def update(self):
         self.speed += 0.1 * self.dir
         if self.speed > 10:
             self.dir = -1.0
         elif self.speed < 0:
             self.dir = 1.0
-            
+
         self.speed2 += 0.3 * self.dir2
         if self.speed2 > 5:
             self.dir2 = -1.0
