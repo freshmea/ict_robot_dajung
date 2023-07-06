@@ -4,6 +4,7 @@ from rclpy.node import Node
 from rclpy.qos import QoSProfile 
 from rclpy.qos import QoSHistoryPolicy, QoSReliabilityPolicy, QoSDurabilityPolicy
 from my_interface.msg import ArithmethicArgument 
+from rcl_interfaces.msg import SetParametersResult
 
 class Argument(Node):
     def __init__(self):
@@ -13,6 +14,7 @@ class Argument(Node):
         self.declare_parameter('max_random_num', 9)
         self.max_random_num = self.get_parameter('max_random_num').value
         # self.add_on_set_parameters_callback(self.update_parameter)
+        self.set_parameters_callback(self.update_parameter)
         
         self.qos_profile = QoSProfile(history=QoSHistoryPolicy.KEEP_LAST,
                                       reliability=QoSReliabilityPolicy.RELIABLE,
@@ -34,6 +36,10 @@ class Argument(Node):
                 self.min_random_num = param.value
             elif param.name == 'max_random_num':
                 self.max_random_num = param.value
+        # successful 을 보내야 정상 작동 됨.
+        result = SetParametersResult()
+        result.successful = True
+        return result
 
 def main(args = None):
     rclpy.init(args=args)

@@ -4,6 +4,7 @@ from rclpy.qos import QoSProfile
 from rclpy.qos import QoSHistoryPolicy, QoSReliabilityPolicy, QoSDurabilityPolicy
 from my_interface.msg import ArithmethicArgument
 
+
 class Argumentsub(Node):
     def __init__(self):
         super().__init__('argumentsub')

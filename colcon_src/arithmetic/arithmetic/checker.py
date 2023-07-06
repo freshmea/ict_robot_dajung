@@ -32,9 +32,9 @@ class Checker(Node):
 
     def get_result_callback(self, future):
         result = future.result().result
-        self.get_logger().info(f'result: {result.all_formula}')
+        self.get_logger().info(f'result: {result.all_formula} {result.total_sum}')
         rclpy.shutdown()
-        
+
     def feedback_callback(self, feedback_msg):
         feedback = feedback_msg.feedback
         self.get_logger().info(f'Received feedback: {feedback.foumula}')
