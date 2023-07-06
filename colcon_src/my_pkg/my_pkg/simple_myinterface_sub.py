@@ -4,7 +4,7 @@ from rclpy.qos import QoSProfile
 from std_msgs.msg import Header
 from my_interface.msg import Mytopic
 
-class T_sub(Node):
+class Myinterface_sub(Node):
     def __init__(self):
         super().__init__('myinterfacesub')
         self.qos_profile = QoSProfile(depth= 10)
@@ -17,7 +17,7 @@ class T_sub(Node):
 
 def main(args = None):
     rclpy.init(args=args)
-    node = T_sub()
+    node = Myinterface_sub()
     try:
         rclpy.spin(node) # 블럭함수
     except KeyboardInterrupt:

@@ -1,0 +1,7 @@
+
+float32 goal_sum
+---
+string[] all_formula
+float32 total_sum
+---
+string[] foumula

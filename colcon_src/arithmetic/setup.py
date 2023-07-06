@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'my_pkg'
+package_name = 'arithmetic'
 
 setup(
     name=package_name,
@@ -20,14 +20,10 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'mpub = my_pkg.simple_message_pub:main',
-            'msub = my_pkg.simple_message_sub:main',
-            'tpub = my_pkg.simple_time_pub:main',
-            'tsub = my_pkg.simple_time_sub:main',
-            'm2sub = my_pkg.simple_message_sub2:main',
-            'mtsub = my_pkg.simple_message_time_sub:main',
-            'myinterfacepub = my_pkg.simple_myinterface_pub:main',
-            'myinterfacesub = my_pkg.simple_myinterface_sub:main'
+            'arg = arithmetic.argument:main',
+            'argsub = arithmetic.argumentsub:main',
+            'main = arithmetic.main:main',
+            'operator = arithmetic.operator:main'
         ],
     },
 )
