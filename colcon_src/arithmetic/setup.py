@@ -23,7 +23,8 @@ setup(
             'arg = arithmetic.argument:main',
             'argsub = arithmetic.argumentsub:main',
             'main = arithmetic.main:main',
-            'operator = arithmetic.operator:main'
+            'operator = arithmetic.operator:main',
+            'checker = arithmetic.checker:main'
         ],
     },
 )
