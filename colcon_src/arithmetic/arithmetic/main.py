@@ -68,7 +68,7 @@ class Calculator(Node):
             time.sleep(1)
         goal_handle.succeed()
         result = ArithmethicChecker.Result()
-        result.all_formula = feedback_msg.formula
+        result.all_formula = feedback_msg.foumula
         result.total_sum = total_sum
         return result
 
