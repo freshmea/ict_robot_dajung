@@ -15,7 +15,6 @@ class Argument(Node):
         self.max_random_num = self.get_parameter('max_random_num').value
         # self.add_on_set_parameters_callback(self.update_parameter)
         self.set_parameters_callback(self.update_parameter)
-        
         self.qos_profile = QoSProfile(history=QoSHistoryPolicy.KEEP_LAST,
                                       reliability=QoSReliabilityPolicy.RELIABLE,
                                       durability=QoSDurabilityPolicy.VOLATILE,
@@ -29,7 +28,7 @@ class Argument(Node):
         msg.argument_a = float(random.randint(self.min_random_num, self.max_random_num))
         msg.argument_b = float(random.randint(self.min_random_num, self.max_random_num))
         self.arithmetic_argument_publisher.publish(msg)
-        
+
     def update_parameter(self, params):
         for param in params:
             if param.name == 'min_random_num':

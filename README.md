@@ -21,3 +21,10 @@
   setuptools 버전을 58.2.0 으로 다운 그래이드 함 
   pip install setuptools==58.2.0
   python3 -m pip install setuptools==58.2.0
+
+* gazebo 실행 안 될 때 - VMware: vmw_ioctl_command error Invalid argument. error
+
+'''
+echo "export SVGA_VGPU10=0" >> ~/.profile
+export SVGA_VGPU10=0
+'''

@@ -3,6 +3,7 @@ import rclpy
 from rclpy.node import Node
 from rclpy.action import ActionClient
 from my_interface.action import ArithmethicChecker
+import argparse
 
 class Checker(Node):
     def __init__(self):
@@ -39,10 +40,23 @@ class Checker(Node):
         feedback = feedback_msg.feedback
         self.get_logger().info(f'Received feedback: {feedback.foumula}')
 
-def main(args = None):
-    rclpy.init(args=args)
+def main(argv = sys.argv[1:]):
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser.add_argument(
+        '-g',
+        '--goal_total_sum',
+        type=int,
+        default=100,
+        help='Target goal value of total sum')
+    parser.add_argument(
+        'argv', nargs=argparse.REMAINDER,
+        help='pass arbitrary arguments to the executable'
+    )
+    args = parser.parse_args()
+    print(args, args.goal_total_sum)
+    rclpy.init(args=args.argv)
     node = Checker()
-    node.send_goal(sys.argv[1])
+    node.send_goal(args.goal_total_sum)
     rclpy.spin(node)
 
 if __name__ == '__main__':
