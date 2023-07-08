@@ -19,7 +19,7 @@ class Game:
         self.opening()
         self.playing = True
         while self.playing:
-            self.clock.tick(FPS + self.snake_sprites.sprites()[0].length/2)
+            self.clock.tick(FPS + Snake.length/2)
             self.update()
             self.event()
             self.make_snake()
@@ -38,7 +38,7 @@ class Game:
             text2 = Text('q를 누르면 게임이 시작 됩니다.', 50, pygame.Color('white'),30, 170, self)
             self.screen.blit(text2.image, text2.rect)
             pygame.display.update()
-        self.score = 0
+        Snake.score = 0
         self.all_sprites = pygame.sprite.Group()
         self.snake_sprites = pygame.sprite.Group()
         self.pizza_sprites = pygame.sprite.Group()
@@ -56,7 +56,7 @@ class Game:
             self.screen.fill(pygame.Color('black'))
             text1 = Text('이것은 엔딩 화면 입니다.', 50, pygame.Color('white'),30, 100, self)
             self.screen.blit(text1.image, text1.rect)
-            text2 = Text(f'점수 : {self.score}뱀의 길이 : {self.snake_sprites.sprites()[0].length} 게임 속도:{self.snake_sprites.sprites()[0].length//4}', 50, pygame.Color('white'), 30, SCREEN_Y/2, self)
+            text2 = Text(f'점수 : {Snake.score}뱀의 길이 : {Snake.length} 게임 속도:{Snake.length//4}', 50, pygame.Color('white'), 30, SCREEN_Y/2, self)
             self.screen.blit(text2.image, text2.rect)
             if self.pressed_key[pygame.K_SPACE]:
                 self.replay = True
@@ -88,7 +88,7 @@ class Game:
 
     def make_snake(self):
         # 스네이크 만드는 클래스.
-        if len(self.snake_sprites) <= self.snake_sprites.sprites()[0].length:
+        if len(self.snake_sprites) <= Snake.length:
             snake = Snake(self, False)
             self.all_sprites.add(snake)
             self.snake_sprites.add(snake)
@@ -101,7 +101,7 @@ class Game:
         self.screen.fill(pygame.Color('white'))
         self.draw_grid()
         self.all_sprites.draw(self.screen)
-        text1 = Text(f'점수 : {self.score}뱀의 길이 : {self.snake_sprites.sprites()[0].length} 게임 속도:{self.snake_sprites.sprites()[0].length//4}', 50, pygame.Color('black'), 30, 20, self)
+        text1 = Text(f'점수 : {Snake.score}뱀의 길이 : {Snake.length} 게임 속도:{Snake.length//4}', 50, pygame.Color('black'), 30, 20, self)
         self.screen.blit(text1.image, text1.rect)
         pygame.display.update()
         
