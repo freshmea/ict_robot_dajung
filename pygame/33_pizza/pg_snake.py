@@ -3,6 +3,8 @@ from pg_local import *
 vec = pygame.math.Vector2
 
 class Snake(pygame.sprite.Sprite):
+    length = 5
+    score = 0
     def __init__(self, root, head):
         super().__init__()
         self.game = root
@@ -16,7 +18,6 @@ class Snake(pygame.sprite.Sprite):
         self.create_snake()
 
     def create_snake(self):
-        self.length = 5
         self.rect.topleft =(GRID*15, GRID*15+SPAN)
         self.direction = random.choice([(-1,0),(1,0),(0, -1),(0, 1)])
         self.game.score = 0
@@ -53,8 +54,8 @@ class Snake(pygame.sprite.Sprite):
     def eat_pizza(self):
         if self.head:
             if pygame.sprite.spritecollide(self, self.game.pizza_sprites, True):
-                self.length += 1
-                self.game.score += 10
+                Snake.length += 1
+                Snake.score += 10
 
     def self_coliide(self):
         if self.head:
