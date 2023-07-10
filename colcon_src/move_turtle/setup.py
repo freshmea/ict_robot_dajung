@@ -20,7 +20,9 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'mturtle = move_turtle.random_move:main'
+            'mturtle = move_turtle.random_move:main',
+            'tb3m = move_turtle.tb3_my_move:main',
+            'tb3tori = move_turtle.tb3_to_origin:main'
         ],
     },
 )

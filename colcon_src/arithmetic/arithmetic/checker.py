@@ -49,10 +49,17 @@ def main(argv = sys.argv[1:]):
         default=100,
         help='Target goal value of total sum')
     parser.add_argument(
+        '-a',
+        '--add_total_sum',
+        type=int,
+        default=120,
+        help='add total sum')   
+    parser.add_argument(
         'argv', nargs=argparse.REMAINDER,
         help='pass arbitrary arguments to the executable'
     )
     args = parser.parse_args()
+    print(args._get_kwargs())
     print(args, args.goal_total_sum)
     rclpy.init(args=args.argv)
     node = Checker()

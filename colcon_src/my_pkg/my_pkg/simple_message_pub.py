@@ -1,8 +1,12 @@
-import rclpy 
+import rclpy ,sys
 from rclpy.node import Node
 from rclpy.qos import QoSProfile 
 from rclpy.qos import QoSHistoryPolicy, QoSReliabilityPolicy, QoSDurabilityPolicy
 from std_msgs.msg import String 
+import numpy as np
+import youtube_dl
+import cv2
+
 
 class M_pub(Node):
     def __init__(self):
@@ -16,6 +20,9 @@ class M_pub(Node):
         self.timer2 = self.create_timer(0.5, self.spin_msg2)
         self.count = 0
         self.count2 = 0
+        print(sys.version)
+        # test = np.zeros((512,512,3), dtype=np.uint8)
+        # cv2.imshow(test)
 
     def spin_msg(self):
         msg = String()
