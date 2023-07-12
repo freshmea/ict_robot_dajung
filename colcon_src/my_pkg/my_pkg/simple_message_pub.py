@@ -4,8 +4,6 @@ from rclpy.qos import QoSProfile
 from rclpy.qos import QoSHistoryPolicy, QoSReliabilityPolicy, QoSDurabilityPolicy
 from std_msgs.msg import String 
 import numpy as np
-import youtube_dl
-import cv2
 
 
 class M_pub(Node):

@@ -76,7 +76,7 @@ class TurtleM_pub(Node):
     
     def calc_theta(self):
         os.system('clear')
-        self.target_theta = atan2(-self.position_y, -self.position_x)
+        self.target_theta = atan2( -self.position_y, -self.position_x)
         print('target_theta',self.target_theta)
         self.distance = sqrt(self.position_x**2 + self.position_y**2)
         print('\ndis:', self.distance)
@@ -88,6 +88,7 @@ class TurtleM_pub(Node):
         self.dir1 = (self.target_theta - self.theta)
         self.dir2 = 2*pi - abs(self.dir1)
         self.dir = min(self.dir1, self.dir2)
+        
         if self.distance < 0.1:
             self.speed = 0.0
             self.dir = 0.0
