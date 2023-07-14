@@ -6,7 +6,7 @@ from geometry_msgs.msg import Twist
 from nav_msgs.msg import Odometry
 import numpy as np
 import time
-from math import radians, pi, sin , cos, atan2
+from math import radians, pi, sin , cos, atan2, degrees, tan
 
 def euler_from_quaternion(quaternion):
     """
@@ -35,7 +35,8 @@ def euler_from_quaternion(quaternion):
 class Tb3_rotate(Node):
     def __init__(self):
         super().__init__('tb3_rotate')
-        self.pub = self.create_publisher(Twist, 'cmd_vel', depth = 10)
+        self.qos = QoSProfile(depth= 10)
+        self.pub = self.create_publisher(Twist, 'cmd_vel', self.qos)
         self.sub = self.create_subscription(Odometry, 'odom', self.update_position_theta)
         self.timer = self.create_timer(0.1, self.spin_msg)
         self.position_x = 0.0
@@ -43,6 +44,7 @@ class Tb3_rotate(Node):
         self.theta = 0.0
         self.dir = 0.0
         self.speed = 0.0
+        self.alpa = 1.2
 
     def update_position_theta(self, msg):
         self.position_x = msg.pose.pose.position.x
@@ -68,34 +70,83 @@ class Tb3_rotate(Node):
         while rclpy.ok():
             rclpy.spin_once(self)
             self.dir1 = angle - self.theta
+            print('angle, self.theta', angle, self.theta)
             self.dir2 = 2*pi - abs(self.dir1)
-            self.dir = min(self.dir1, self.dir2)
-            print('dir', self.dir)
-            if abs(angle - self.theta) < pi/60:
+            if angle * self.theta < 0:
+                if self.theta < 0:
+                    self.dir2 = self.dir2 * -1
+            self.dir = self.dir1 if min(abs(self.dir1), abs(self.dir2)) == abs(self.dir1) else self.dir2
+            print('dir', self.dir, 'angle', angle, 'self.theta', self.theta)
+            if abs(angle - self.theta) < pi/180:
                 self.dir = 0.0
                 break
             msg.angular.z = self.dir
+            self.pub.publish(msg)
+            
+    def rotate2(self, angle):
+        rclpy.spin_once(self)
+        msg = Twist()
+        self.t_time = time.time()
+        self.calc_time = abs(angle)* self.alpa
+        if angle > 0:
+            self.dir = 1.0
+        else:
+            self.dir = -1.0
+        while rclpy.ok():
+            rclpy.spin_once(self)
+            if time.time()-self.t_time > self.calc_time:
+                self.dir = 0.0
+                break
+            msg.angular.z = self.dir
+            self.pub.publish(msg)
+            
+    def turn(self, angle):
+        rclpy.spin_once(self)
+        msg = Twist()
+        self.t_time = time.time()
+        self.calc_time = abs(angle) 
+        if angle > 0:
+            self.dir = 1.0
+        else:
+            self.dir = -1.0
+        while rclpy.ok():
+            rclpy.spin_once(self)
+            if time.time()-self.t_time > self.calc_time:
+                self.dir = 0.0
+                self.speed = 0.0
+                break
+            msg.angular.z = self.dir
+            msg.linear.x = 0.2
             self.pub.publish(msg)
 
     def go_strait(self, distance):
         rclpy.spin_once(self)
         self.target_x = self.position_x + distance * cos(self.theta)
         self.target_y = self.position_y + distance * sin(self.theta)
+        angle = self.theta
+        print('see this',self.target_x, self.target_y, self.position_x, self.position_y, angle)
         msg = Twist()
         self.update_org()
         while rclpy.ok():
             rclpy.spin_once(self)
             diff = abs(self.target_x-self.position_x)+abs(self.target_y-self.position_y)
-            self.dir1 = atan2( -self.position_y, -self.position_x) - self.theta
+            self.dir1 = angle - self.theta
             self.dir2 = 2*pi - abs(self.dir1)
-            self.dir = min(self.dir1, self.dir2)/10
+            print('dir1, dir2', self.dir1, self.dir2)
+            if angle * self.theta < 0:
+                if self.theta < 0:
+                    self.dir2 = self.dir2 * -1
+            self.dir = self.dir1 if min(abs(self.dir1), abs(self.dir2)) == abs(self.dir1) else self.dir2
             print('diff', diff)
+            print('position', self.position_x, self.position_y, self.theta, angle)
             if diff > 2:
                 self.speed = 0.2
             elif diff > 1:
                 self.speed = 0.1
-            print('speed', self.speed)
-            if  diff < 0.3:
+            elif diff > 0.1:
+                self.speed = 0.05
+            print('speed, dir', self.speed, self.dir)
+            if diff < 0.1:
                 self.speed = 0.0
                 self.dir = 0.0
                 break
@@ -122,10 +173,18 @@ def main(args = None):
     rclpy.init(args=args)
     node = Tb3_rotate()
     try:
-        # a = radians(float(input('input rotation degree:')))
-        # node.rotate(a)
-        d = float(input('input forward meter:'))
-        node.go_strait2(d)
+        # node.go_strait2(1.5)
+        # node.turn(radians(90.0))
+        # node.go_strait2(0.8)
+        # node.turn(radians(90.0))
+        # node.go_strait2(1.0)
+        # node.turn(radians(90.0))
+        node.go_strait(1.5)
+        node.rotate(radians(90.0))
+        node.go_strait(0.8)
+        node.rotate(radians(180.0))
+        node.go_strait(1.0)
+        node.rotate(radians(-90.0))
         rclpy.spin(node) # 블럭함수
     except KeyboardInterrupt:
         node.get_logger().info('Keyboard Interrupt!!')
