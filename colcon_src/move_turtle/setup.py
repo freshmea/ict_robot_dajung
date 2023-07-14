@@ -20,7 +20,14 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'mturtle = move_turtle.random_move:main'
+            'mturtle = move_turtle.random_move:main',
+            'tb3m = move_turtle.tb3_my_move:main',
+            'tb3tori = move_turtle.tb3_to_origin:main',
+            'tb3rot = move_turtle.tb3_rotate:main',
+            'tb3imagesub = move_turtle.tb3_image_sub:main',
+            'tb3lasersub = move_turtle.tb3_laser_sub:main',
+            'tb3imagehog = move_turtle.tb3_image_hog:main',
+            'tb3yelline = move_turtle.tb3_yellow_line:main'
         ],
     },
 )
