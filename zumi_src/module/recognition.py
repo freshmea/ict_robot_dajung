@@ -14,8 +14,8 @@ class Recognition():
         self.streaming = True
         self.streaming_image = None
         self.cap = 0
-
-        self.data_path = os.getcwd()    +'/'
+        
+        self.data_path = os.getcwd()    +'/'     
         #self.data_path = '/home/pi/Dashboard/Zumi_Content/Data/face-recognition/'
 
     def makeLabel(self):
@@ -179,10 +179,10 @@ screen = Screen()
 
 def collectPictures(name, number_of_photo):
     camera.start_camera()
-
+    
     fd.name = name
     count = int(number_of_photo)
-
+    
     print("Capture " + number_of_photo + " pictures")
     time.sleep(1)
 
@@ -204,7 +204,7 @@ def collectPictures(name, number_of_photo):
             screen.draw_text("")
             camera.close()
             break
-
+    
     fd.cap = 0
     time.sleep(1)
     screen.draw_text("")
@@ -214,7 +214,7 @@ def runModel():
     camera.start_camera()
     print("로딩...")
     trainer_path = os.getcwd()
-
+    
     fd.recognizer.read(trainer_path + '/trainer/trainer.yml')
     #fd.recognizer.read('/home/pi/Dashboard/Zumi_Content/Data/face-recognition/trainer/trainer.yml')
     print("시작")
@@ -234,15 +234,15 @@ def runModel():
             camera.close()
             break
 
-def trainModel():
+def trainModel():    
     print("모델을 학습 중입니다....")
     fd.trainModel()
-    print("완료!")
-
+    print("완료!") 
+    
 def deleteOneDataset():
     import pickle
 
-    labels = 0
+    labels = 0    
     try:
         with open('/home/pi/Dashboard/Zumi_Content/Data/face-recognition/labels.pickle', 'rb') as labelFile:
             labels = pickle.load(labelFile)
@@ -253,7 +253,8 @@ def deleteOneDataset():
         fd.deleteDataset(name)
         print("??")
     except:
-        print("[Error] No dataset")
-
+        print("[Error] No dataset")      
+        
 def deleteAllDatasets():
     fd.deleteAllDatasets()
+        

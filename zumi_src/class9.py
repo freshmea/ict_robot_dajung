@@ -2,7 +2,8 @@ from zumi.zumi import Zumi
 from zumi.util.camera import Camera
 from zumi.util.vision import Vision
 from zumi.util.screen import Screen
-import time
+from zumi.module.Barcode import reading_code
+from module import Hangman
 zumi = Zumi()
 camera = Camera()
 vision = Vision()
