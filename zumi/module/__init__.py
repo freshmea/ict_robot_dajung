@@ -1,0 +1,16 @@
+__all__ = [
+    "Barcode",
+    "Clock",
+    "color_classifier",
+    "ControlApp",
+    "ElectronicBoard",
+    "GyroSensor",
+    "Hangman",
+    "IrSensor",
+    "LineTrace",
+    "Maze",
+    "MyPersonality",
+    "PhotoApp",
+    "recognition",
+    "ShakeDice",
+]
