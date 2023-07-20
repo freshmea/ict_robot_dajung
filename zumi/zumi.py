@@ -1300,6 +1300,7 @@ class Zumi:
         k_i = self.D_I
         k_d = self.D_D
         self.drive_at_angle(max_speed, abs(speed), desired_angle, k_p, k_d, k_i, accuracy)
+        self.drive_at_angle()
 
     def go_reverse(self, speed, desired_angle, max_speed=127, accuracy=0.8):
         """

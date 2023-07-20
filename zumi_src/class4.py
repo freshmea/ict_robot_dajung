@@ -2,7 +2,7 @@ from zumi.zumi import Zumi
 import time 
 
 zumi = Zumi()
-
+zumi.read_z_angle()
 zumi.reset_gyro()
 heading = 0
 try:
