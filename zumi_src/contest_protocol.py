@@ -22,7 +22,7 @@ class Zumi2(Zumi):
 
         self.reset_PID()
         start_time = time.time()
-
+        flag = 0
         # if no angle is inserted, drive in the direction currently facing
         if angle is None:
             self.update_angles()
@@ -37,7 +37,11 @@ class Zumi2(Zumi):
                 # if both sensors are outside stop
                 if left_bottom_ir < l_th and right_bottom_ir < r_th:
                     self.turn(init_ang)
-                    init_ang += 10 # 추가한 구문 
+                    if flag % 9 > 3:
+                        init_ang -= 20
+                    else:
+                        init_ang += 20
+                    flag += 1
                 # if both sensor detect black keep going
                 elif left_bottom_ir > l_th and right_bottom_ir > r_th:
                     self.go_straight(speed, init_ang)
@@ -253,7 +257,7 @@ try:
     # C-2
     print('start')
     zumi.forward(speed = 20, duration = 0.2)
-    zumi.line_follow_gyro_assist(speed=20, duration=10)
+    zumi.line_follow_gyro_assist(speed=20, duration=40)
     
     
     
