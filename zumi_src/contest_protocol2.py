@@ -10,79 +10,7 @@ from threading import Thread
 from zumi.util.color_classifier import ColorClassifier
 import time
 
-class Zumi2(Zumi):
-    def __init__(self):
-        super().__init__()
-        
-        # drive PID values; used in forward(),go_straight() etc
-        self.D_P = 2.9
-        self.D_I = 0.01
-        self.D_D = 0.05
-
-        # turn PID values; used in turn()
-        self.T_P = 0.6
-        self.T_I = 0.001
-        self.T_D = 0.001
-        
-    def line_follow_gyro_assist(self, speed=20, duration=1, angle=None, angle_adj=2, l_th=None, r_th=None):
-        if l_th is None:
-            l_th = self.IR_THRESHOLD_LIST[3]
-        if r_th is None:
-            r_th = self.IR_THRESHOLD_LIST[1]
-
-        self.reset_PID()
-        start_time = time.time()
-        flag = 0
-        # if no angle is inserted, drive in the direction currently facing
-        if angle is None:
-            self.update_angles()
-            init_ang = self.angle_list[2]
-        else:
-            init_ang = angle
-        try:
-            while time.time() - start_time < duration:
-                ir_readings = self.get_all_IR_data()
-                left_bottom_ir = ir_readings[3]
-                right_bottom_ir = ir_readings[1]
-                # if both sensors are outside stop
-                if left_bottom_ir < l_th and right_bottom_ir < r_th:
-                    self.turn(init_ang)
-                    if flag % 9 > 3:
-                        init_ang -= 20
-                    else:
-                        init_ang += 20
-                    flag += 1
-                # if both sensor detect black keep going
-                elif left_bottom_ir > l_th and right_bottom_ir > r_th:
-                    self.go_straight(speed, init_ang)
-                # if left sensor out turn to right
-                elif left_bottom_ir < l_th and right_bottom_ir > r_th:
-                    init_ang = init_ang - angle_adj
-                    # while left_bottom_ir <100 and right_bottom_ir >100:
-                    self.go_straight(speed, init_ang)
-                # if right sensor out turn to left
-                elif left_bottom_ir > l_th and right_bottom_ir < r_th:
-                    init_ang = init_ang + angle_adj
-                    # while left_bottom_ir >100 and right_bottom_ir <100:
-                    self.go_straight(speed, init_ang)
-                else:
-                    pass
-        finally:
-            self.stop()
-
-    def forward2(self, speed=40, duration=1.0,):
-        start_time = time.time()
-        right_speed = -.00375*(speed-136.66)**2+60.041
-        try:
-            while (time.time() - start_time) < abs(duration):
-                self.control_motors(int(right_speed), speed)
-                
-        except KeyboardInterrupt:
-            raise
-        finally:
-            self.stop()
-
-zumi = Zumi2()
+zumi = Zumi()
 screen = Screen()
 camera = Camera()
 vision = Vision()
@@ -187,7 +115,7 @@ finally:
 
 try:
     zumi.turn(-90)
-    zumi.funnel_align(speed=20, duration=6)
+    zumi.funnel_align(speed=20, duration=18)
     zumi.turn(-90)
 except KeyboardInterrupt:
     zumi.stop()
@@ -213,7 +141,7 @@ try:
             break
     # B-2 
     heading = zumi.read_z_angle()
-    for x in range(50):
+    for x in range(350):
         ir = zumi.get_all_IR_data()
         front_right_ir = ir[0]
         front_left_ir = ir[5]
@@ -224,10 +152,6 @@ try:
                 heading += 30
             else:
                 heading -= 30
-            # if 0 < heading < 90:
-            #     heading = 90
-            # if 0 > heading < -90:
-            #     heading = -90
             zumi.turn(heading, 0.5)
         else:
             zumi.forward_step(20, heading)
@@ -245,9 +169,7 @@ finally:
 
 # B-3
 try:
-    zumi.turn(-90)
     zumi.funnel_align(speed=20, duration=6)
-    zumi.turn(-90)
 except KeyboardInterrupt:
     zumi.stop()
     camera.close()
@@ -279,8 +201,13 @@ try:
             break
     # C-2
     print('start')
-    zumi.forward(speed = 20, duration = 0.2)
-    zumi.line_follow_gyro_assist(speed=20, duration=40)
+    zumi.line_follow_gyro_assist(speed=20, duration=2)
+    zumi.turn(0)
+    zumi.line_follow_gyro_assist(speed=20, duration=7)
+    zumi.turn(-90)
+    zumi.line_follow_gyro_assist(speed=20, duration=3)
+    zumi.turn(180)
+    zumi.line_follow_gyro_assist(speed=20, duration=2)
     
     
     
@@ -308,8 +235,10 @@ try:
         zumi.turn(90)
     if message2 == 'left':
         zumi.turn(-90)
-    zumi.line_follow_gyro_assist(speed=20, duration=10)
-    zumi.forward(40, duration = 0.5)
+    zumi.line_follow_gyro_assist(speed=20, duration=3)
+    zumi.turn(180)
+    zumi.line_follow_gyro_assist(speed=20, duration=5)
+    zumi.forward(40, duration = 1)
     a= Thread(target = celebrate)
     b= Thread(target = screen.happy)
     c= Thread(target = happymove)
