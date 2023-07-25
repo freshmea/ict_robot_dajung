@@ -237,7 +237,7 @@ class CameraPoses():
 
 
 
-with open('intrinsicNew.npy', 'rb') as f:
+with open('zumi_src/intrinsicNew.npy', 'rb') as f:
     intrinsic = np.load(f)
 
 
@@ -254,7 +254,7 @@ start_rotation = np.identity(3)
 start_pose = np.concatenate((start_rotation, start_translation), axis=1)
 #print("Start pose: ", start_pose)
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
 # Check if camera opened successfully
 if cap.isOpened() == False:
