@@ -150,6 +150,7 @@ try:
             break
     # C-2
     print('C-2 start')
+    # TODO 라인을 잘 찾지 못함. 초기 방향 위치 문제.
     zumi.forward(10, 0.3)
     find_line(10, 0)
     zumi.line_follow_gyro_assist(speed=20, duration=2)
@@ -171,9 +172,11 @@ try:
         zumi.turn(90)
     if message2 == 'left':
         zumi.turn(-90)
+    # TODO 라인을 잘 찾지 못함. 초기 방향 위치 문제.
     find_line(-10, 0)
     zumi.line_follow_gyro_assist(speed=20, duration=3)
     zumi.turn(180)
+    # TODO 속도가 빨라서 라인을 넘으면 멈추는 문제 있음. 가끔 발생.
     zumi.line_follow_gyro_assist(speed=20, duration=5)
     zumi.forward(40, duration = 1.4)
     a= Thread(target = celebrate)
