@@ -35,5 +35,8 @@ https://colcon.readthedocs.io/en/released/user/installation.html
 
 이 페이지에서 colcon을 소스에서 빌드 함.
 
+fastrtps 설치 오류 eProsima 제외 하고 빌드 진행.
+
+
 history
 
