@@ -5,6 +5,8 @@ from zumi.util.vision import Vision
 from zumi.util.screen import Screen
 from zumi.module.Barcode import reading_code
 from module import Hangman
+import cv2
+
 zumi = Zumi()
 camera = Camera()
 vision = Vision()
@@ -23,3 +25,5 @@ zumi.line_follow_gyro_assist(speed=20, duration=10, angle_adj=45)
 screen.clear_drawing()
 screen.draw_text()
 screen.print()
+cap = cv2.VideoCapture(0)
+cv2.caph
