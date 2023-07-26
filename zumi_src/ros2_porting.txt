@@ -37,6 +37,19 @@ https://colcon.readthedocs.io/en/released/user/installation.html
 
 fastrtps 설치 오류 eProsima 제외 하고 빌드 진행.
 
+- -- stderr: fastrtps
+CMake Error at /usr/share/cmake-3.7/Modules/FindPackageHandleStandardArgs.cmake:138 (message):
+Could NOT find Asio (missing: ASIO_INCLUDE_DIR)
+Call Stack (most recent call first):
+/usr/share/cmake-3.7/Modules/FindPackageHandleStandardArgs.cmake:378 (_FPHSA_FAILURE_MESSAGE)
+cmake/modules/FindAsio.cmake:16 (find_package_handle_standard_args)
+cmake/common/eprosima_libraries.cmake:96 (find_package)
+CMakeLists.txt:219 (eprosima_find_thirdparty)
 
-history
+---
 
+Failed   <<< fastrtps [37.8s, exited with code 1]
+
+https://github.com/eProsima/Fast-DDS/issues/757
+
+`sudo apt-get install libasio-dev` 를 하면 해결 될 수 도 있다고 함.
