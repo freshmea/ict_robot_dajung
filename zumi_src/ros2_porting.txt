@@ -1,0 +1,39 @@
+os 정보 
+
+PRETTY_NAME="Raspbian GNU/Linux 9 (stretch)"
+NAME="Raspbian GNU/Linux"
+VERSION_ID="9"
+VERSION="9 (stretch)"
+VERSION_CODENAME=stretch
+ID=raspbian
+ID_LIKE=debian
+HOME_URL="http://www.raspbian.org/"
+SUPPORT_URL="http://www.raspbian.org/RaspbianForums"
+BUG_REPORT_URL="http://www.raspbian.org/RaspbianBugs"
+
+Python 2.7.13
+
+Python 3.5.3
+
+라즈베리파이 제로에 ros2 가 안 깔리는 이유
+
+https://answers.ros.org/question/378540/struggling-to-get-foxy-on-a-32bit-armv7-beaglebone-blue/
+
+이 페이지를 통해서 ros2 빌드를 진행.
+
+그런데 colcon 패키지가 깔리지 않음.
+
+https://docs.ros.org/en/dashing/Installation/Ubuntu-Development-Setup.html
+
+`python3-colcon-common-extensions **\**`
+
+이것이 문제가 됨.  무슨 아키텍쳐 문제.
+
+그래서 colcon을 따로 설치함.
+
+https://colcon.readthedocs.io/en/released/user/installation.html
+
+이 페이지에서 colcon을 소스에서 빌드 함.
+
+history
+
