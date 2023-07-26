@@ -20,12 +20,13 @@ vision = Vision()
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 160)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 128)
-cap.set(cv2.CAP_PROP_FPS, 120)
+cap.set(cv2.CAP_PROP_FPS, 20)
 if not cap:
     raise
 try:
     cnt = 0
     start_t = time.time()
+    encode_param=[int(cv2.IMWRITE_JPEG_QUALITY),9]
     while True:
         cnt += 1
         ret, frame = cap.read()
@@ -33,9 +34,11 @@ try:
         terminate_t = time.time()
         FPS = 'fps'+ str(int(cnt/(terminate_t-start_t)))
         cv2.putText(frame,FPS, (30,30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 1)
-        print(FPS)
+#         print(FPS)
+        result, frame=cv2.imencode('.jpg',frame,encode_param)
+        camera.show_image(cv2.cvtColor(cv2.imdecode(frame,1), cv2.COLOR_BGR2RGB))
 #         camera.show_image(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
-#         IPython.display.clear_output(wait=True)
+        IPython.display.clear_output(wait=True)
 finally:
     cap.release()
 #     camera.close()
