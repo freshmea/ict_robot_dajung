@@ -4,6 +4,7 @@ from zumi.zumi import Zumi
 from zumi.util.screen import Screen
 from zumi.util.camera import Camera
 from zumi.util.vision import Vision
+from zumi.protocol import Note
 from threading import Thread
 from zumi.util.color_classifier import ColorClassifier
 import time
