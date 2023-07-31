@@ -2,7 +2,6 @@
 
 from zumi.zumi import Zumi
 from zumi.util.screen import Screen
-from zumi.personality import Sound
 from zumi.util.camera import Camera
 from zumi.util.vision import Vision
 from zumi.protocol import Note
@@ -14,7 +13,6 @@ zumi = Zumi()
 screen = Screen()
 camera = Camera()
 vision = Vision()
-sound = Sound(zumi)
 zumi.calibrate_gyro()
 zumi.reset_gyro()
 
