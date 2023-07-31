@@ -97,7 +97,7 @@ try:
     # A-4
     print('A-4 start')
     zumi.turn(-90)
-    zumi.reset_drive()
+    zumi.reset_drive() # 북쪽 방향 0 도
     zumi.funnel_align(speed=20, duration=10)
     zumi.turn(0)
     # B-1
@@ -132,7 +132,7 @@ try:
     # B-3
     print('B-3 start')
     zumi.turn(0)
-    zumi.reset_drive()
+    zumi.reset_drive() # 북쪽 방향 0도 
     zumi.funnel_align(speed=20, duration=6)
     zumi.turn(0)
     # C-1
