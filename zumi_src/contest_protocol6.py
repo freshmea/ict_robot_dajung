@@ -75,7 +75,7 @@ try:
     if message == 'factory':
         zumi.drive_over_markers(4, time_out=5)
     if message == 'school':
-        zumi.drive_over_markers(8, time_out=5)
+        zumi.drive_over_markers(9, time_out=5)
     if message == 'office':
         zumi.drive_over_markers(12, time_out=5)
     if message == 'museum':
@@ -86,12 +86,14 @@ try:
         zumi.turn(desired_angle= -90, duration= 2, max_speed=10)
     if message == 'school' or message == 'museum':
         zumi.turn(desired_angle= 90, duration= 2, max_speed=10)
-    zumi.forward(30, 1.4)
+    heading = zumi.read_z_angle()
+    zumi.forward_avoid_collision(speed=40, duration=10, desired_angle= heading, left_th= 20, right_th= 20 )
     if message == 'factory' or message == 'office':
         zumi.turn(desired_angle= 90, duration= 2, max_speed=10)
     if message == 'school' or message == 'museum':
         zumi.turn(desired_angle= -90, duration= 2, max_speed=10)
-    zumi.forward(30, 1.0)
+    heading = zumi.read_z_angle()
+    zumi.forward_avoid_collision(speed=40, duration=10, desired_angle= heading, left_th= 20, right_th= 20 )
     zumi.turn(desired_angle= 0, duration= 2, max_speed=10)
     zumi.forward_avoid_collision(speed=40, duration=10, desired_angle= 0, left_th=50, right_th= 50 )
     # A-4
