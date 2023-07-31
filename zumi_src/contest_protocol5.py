@@ -97,8 +97,9 @@ try:
     # A-4
     print('A-4 start')
     zumi.turn(-90)
-    zumi.funnel_align(speed=20, duration=12)
-    zumi.turn(-90)
+    zumi.reset_drive()
+    zumi.funnel_align(speed=20, duration=10)
+    zumi.turn(0)
     # B-1
     print('B-1 start')
     while True:
@@ -130,9 +131,10 @@ try:
             zumi.forward_step(20, heading)
     # B-3
     print('B-3 start')
-    zumi.turn(-90)
+    zumi.turn(0)
+    zumi.reset_drive()
     zumi.funnel_align(speed=20, duration=6)
-    zumi.turn(-90)
+    zumi.turn(0)
     # C-1
     print('C-1 start')
     user_name = 'aa'
@@ -154,13 +156,13 @@ try:
     # C-2
     print('C-2 start')
     zumi.forward(10, 0.3)
-    find_line(10, 0)
+#     find_line(10, 0)
     zumi.line_follow_gyro_assist(speed=20, duration=2)
-    zumi.turn(0)
+    zumi.turn(90)
     zumi.line_follow_gyro_assist(speed=20, duration=7)
-    zumi.turn(-90)
+    zumi.turn(0)
     zumi.line_follow_gyro_assist(speed=20, duration=3)
-    zumi.turn(180)
+    zumi.turn(-90)
     zumi.line_follow_gyro_assist(speed=20, duration=2)
     # C-3
     print('C-3 start')
@@ -171,17 +173,17 @@ try:
     doremi()
     message2 = vision.get_QR_message(qr)
     if message2 == 'right':
-        zumi.turn(90)
+        zumi.turn(180)
     if message2 == 'left':
-        zumi.turn(-90)
+        zumi.turn(0)
 #     find_line(-10, 5)
     zumi.line_follow_gyro_assist(speed=20, duration=3)
-    zumi.turn(180)
+    zumi.turn(-90)
     zumi.line_follow_gyro_assist(speed=20, duration=5)
     zumi.forward(40, duration = 1.4)
-    a= Thread(target = celebrate)
-    b= Thread(target = screen.happy)
-    c= Thread(target = happymove)
+    a = Thread(target = celebrate)
+    b = Thread(target = screen.happy)
+    c = Thread(target = happymove)
     a.start()
     b.start()
     c.start()
