@@ -44,20 +44,6 @@ def doremi():
     zumi.play_note(Note.D3, 1000)
     zumi.play_note(Note.E3, 1000)
 
-def find_line(speed, rotate):
-    heading = zumi.read_z_angle()
-    stime = time.time()
-    while True and time.time()-stime < 2:
-        heading += rotate
-        ir = zumi.get_all_IR_data()
-        br_ir = ir[1]
-        bl_ir = ir[3]
-        print(br_ir, bl_ir)
-        if br_ir > 50 and bl_ir > 50:
-            break
-        zumi.drive_at_angle(10, speed, heading, zumi.D_P, zumi.D_I, zumi.D_D, 1.0)
-
-
 try:
     # A-1
     print('A-1 start')
@@ -119,8 +105,6 @@ try:
         ir = zumi.get_all_IR_data()
         front_right_ir = ir[0]
         front_left_ir = ir[5]
-#         front_left_ir -= 90 # ir data calibration
-#         print(front_right_ir, front_left_ir)
         if front_right_ir < 30 or front_left_ir < 30:
             if time.time() - b2_time < 10 :
                 heading -= 30
@@ -156,7 +140,6 @@ try:
     # C-2
     print('C-2 start')
     zumi.forward(10, 0.3)
-#     find_line(10, 0)
     zumi.line_follow_gyro_assist(speed=20, duration=2)
     zumi.turn(90)
     zumi.line_follow_gyro_assist(speed=20, duration=7)
@@ -176,7 +159,6 @@ try:
         zumi.turn(180)
     if message2 == 'left':
         zumi.turn(0)
-#     find_line(-10, 5)
     zumi.line_follow_gyro_assist(speed=20, duration=3)
     zumi.turn(-90)
     zumi.line_follow_gyro_assist(speed=20, duration=5)
