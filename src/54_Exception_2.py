@@ -4,7 +4,7 @@
 class Myerror(Exception):
     def __init__(self, *args: object) -> None:
         super().__init__(*args)
-        self.args = ["이것은 내가 만든 에러 입니다."]
+        self.args = ["이것은 내가 만든 에러 입니다."]  # type: ignore
 
 
 def main():
